@@ -1,0 +1,60 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title color="primary">Auditorias 1.0.10</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeLg="6" sizeMd="6" sizeSm="6" sizeXl="6" sizeXs="12">
+        <ion-card class="anim">
+            <ion-item lines="none">
+              <ion-label color="primary" position="floating">Fecha Inicio </ion-label>              
+              <ion-icon color="primary" slot="end" name="calendar-outline"></ion-icon>
+              <div *ngIf="bandera1" class="loading-1 loading"></div>
+              <ion-datetime
+                [disabled]="bandera1"
+                (ionChange)="fechaInicio($event)" 
+                [value]="fechaIni"
+                doneText="Aceptar" 
+                cancelText="Cancelar" 
+                displayFormat="DD/MMMM/YYYY"
+                pickerFormat="DD MMMM YYYY" >
+              </ion-datetime>
+            </ion-item>
+        </ion-card>
+      </ion-col>
+
+      <ion-col sizeLg="6" sizeMd="6" sizeSm="6" sizeXl="6" sizeXs="12">
+        <ion-card class="anim">
+          <ion-item lines="none">
+            <ion-label color="primary" position="floating">Fecha Fin</ion-label>
+            <ion-icon color="primary" slot="end" name="calendar-outline"></ion-icon>
+            <div *ngIf="bandera2" class="loading-1 loading"></div>
+            <ion-datetime
+              [disabled]="bandera2"
+              (ionChange)="fechaFinal($event)"
+              [value]="fechaFin"
+              doneText="Aceptar" 
+              cancelText="Cancelar" 
+              displayFormat="DD/MMMM/YYYY"
+              pickerFormat="DD MMMM YYYY" ></ion-datetime>
+          </ion-item>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <app-auditorias [auditorias]="auditorias"></app-auditorias>
+
+  <ion-fab vertical="bottom" horizontal="end" >
+    <ion-fab-button>
+      <ion-icon name="options-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top" class="anim">
+      <ion-fab-button (click)="chageThemedark()"><ion-icon [name]="icon"></ion-icon></ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+
+</ion-content>

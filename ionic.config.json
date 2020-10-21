@@ -1,0 +1,7 @@
+{
+  "name": "auditorias",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

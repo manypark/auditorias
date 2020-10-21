@@ -1,0 +1,14 @@
+{
+  "appId": "com.tci.consultoria.auditorias",
+  "appName": "Auditorias",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "plugins": {
+    "SplashScreen": {
+      "launchAutoHide": false,
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {}
+}
