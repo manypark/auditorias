@@ -1,13 +1,69 @@
-ion-card {
-    box-shadow: 0px 10px 15px -8px rgba(0, 0, 0, 0.280);
+ion-item {
+    box-shadow: 0px 10px 15px -8px rgba(0, 0, 0, 0.48);
     border-radius: 10px;
-    margin: 40px 23px 0px 23px;
+    margin: 40px 23px 20px 23px;
+}
+
+ion-item-option {
+    box-shadow: 0px 10px 15px -8px rgba(#3246D3, 0.9);
+    border-radius: 10px;
+    margin: 40px 15px 20px 15px;
+}
+
+// .azul {
+//     box-shadow: 0px 10px 15px -8px rgba(#3246D3, 0.9);
+// }
+
+// .red {
+//     box-shadow: 0px 10px 15px -8px rgba(#EE5151, 0.9);
+// }
+
+// .green {
+//     box-shadow: 0px 10px 15px -8px rgba(#5CF944, 0.9);
+// }
+
+.cuadrado {
+    width: 5px; 
+    height: 75%; 
+    background: #3246D3;
+    border-radius: 10px;
+    margin: 1px 5px 5px 5px;
+    box-shadow: -10px 0px 15px -8px rgba(#3246D3, 0.9);
+}
+
+ion-col {
+    padding: 0px 0px 0px 0px !important;
+    margin: 0px 0px 0px 0px !important;
+    width: 20% !important;
+}
+
+.row {
+    margin-bottom: 20px;
+}
+
+ion-list {
+    padding-bottom: 25px;
+    background: none;
+}
+
+h2, h3 {
+    margin: 18px 10px 20px 5px;
+}
+
+.nombre {
+    margin-top: 7px;
 }
 
 @media (prefers-color-scheme: dark) {
-    ion-card {
-        box-shadow: 0px 10px 15px -8px rgba(231, 231, 231, 0.5);
+    ion-item {
+        box-shadow: 0px 10px 15px -8px rgba(231, 231, 231, 0.48);
         border-radius: 10px;
-        margin: 40px 23px 0px 23px;
+        margin: 40px 23px 20px 23px;
+    }
+
+    ion-item-option {
+        box-shadow: 0px 10px 15px -8px rgba(#3246D3, 0.9);
+        border-radius: 10px;
+        margin: 40px 15px 20px 15px;
     }
 }

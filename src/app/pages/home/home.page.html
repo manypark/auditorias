@@ -11,10 +11,10 @@
         <ion-card class="anim">
             <ion-item lines="none">
               <ion-label color="primary" position="floating">Fecha Inicio </ion-label>              
-              <ion-icon color="primary" slot="end" name="calendar-outline"></ion-icon>
-              <div *ngIf="bandera1" class="loading-1 loading"></div>
+              <ion-icon class="icon-calendar" color="primary" slot="end" name="calendar-outline"></ion-icon>
+              <div *ngIf="_sAudi.ban1" class="loading-1 loading"></div>
               <ion-datetime
-                [disabled]="bandera1"
+                [disabled]="_sAudi.ban1"
                 (ionChange)="fechaInicio($event)" 
                 [value]="fechaIni"
                 doneText="Aceptar" 
@@ -30,10 +30,10 @@
         <ion-card class="anim">
           <ion-item lines="none">
             <ion-label color="primary" position="floating">Fecha Fin</ion-label>
-            <ion-icon color="primary" slot="end" name="calendar-outline"></ion-icon>
-            <div *ngIf="bandera2" class="loading-1 loading"></div>
+            <ion-icon class="icon-calendar" color="primary" slot="end" name="calendar-outline"></ion-icon>
+            <div *ngIf="_sAudi.ban2" class="loading-1 loading"></div>
             <ion-datetime
-              [disabled]="bandera2"
+              [disabled]="_sAudi.ban2"
               (ionChange)="fechaFinal($event)"
               [value]="fechaFin"
               doneText="Aceptar" 
@@ -46,9 +46,9 @@
     </ion-row>
   </ion-grid>
 
-  <app-auditorias [auditorias]="auditorias"></app-auditorias>
+  <app-auditorias [auditorias]="_sAudi.auditorias"></app-auditorias>
 
-  <ion-fab vertical="bottom" horizontal="end" >
+  <ion-fab vertical="bottom" horizontal="end"  slot="fixed">
     <ion-fab-button>
       <ion-icon name="options-outline"></ion-icon>
     </ion-fab-button>

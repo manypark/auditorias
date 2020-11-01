@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Auditoria } from 'src/app/classes/auditoria';
 import { Plugins } from '@capacitor/core';
 import { Auditorias } from 'src/app/interfaces/interface';
-import { ToastController } from '@ionic/angular';
 import { ThemeService } from 'src/app/services/theme.service';
+import { AuditoriasService } from '../../services/auditorias.service';
 const { Storage } = Plugins;
 
 @Component({
@@ -18,47 +18,28 @@ const { Storage } = Plugins;
 // const info      = await Device.getInfo();
 export class HomePage implements OnInit {
 
-  auditoria = Auditoria.getInstance();
-  auditorias: Auditorias[] = [];
   fechaIni = new Date().toISOString();
   fechaFin = new Date().toISOString();
   darkTheme = false;
   icon = 'moon-outline';
-  bandera1 = false;
-  bandera2 = false;
 
-  constructor(private toastCtrl : ToastController,
-              private _sTheme   : ThemeService) { }
+  constructor(private _sTheme   : ThemeService,
+              private _sAudi    : AuditoriasService) { }
 
   async ngOnInit() {    
-    this.auditorias = JSON.parse((await Storage.get({ key: 'auditorias' })).value);
+    this._sAudi.auditorias = JSON.parse((await Storage.get({ key: 'auditorias' })).value);
     this.darkTheme  =  JSON.parse((await Storage.get({ key: 'dark' })).value);
     this.darkTheme ? this.changeTheme() : null;
   }
 
   fechaInicio(event:CustomEvent)  {
-    this.auditoria.setFechaIni(event.detail.value);
-    this.bandera1 = true;
-    this.getAuditorias();
+    this._sAudi.setFechaIni(event.detail.value);
+    this._sAudi.getAuditorias(true, false);
   }
 
   fechaFinal(event:CustomEvent)  {    
-    this.auditoria.setFechaFinal(event.detail.value);
-    this.bandera2 = true;
-    this.getAuditorias();
-  }
-
-  async getAuditorias() {
-    this.auditoria.getAuditorias().subscribe(async res => {
-      this.bandera1 = false;
-      this.bandera2 = false;
-      await Storage.set({ key: 'auditorias', value: JSON.stringify(res) });
-      this.auditorias = res;
-    }, err => {
-      this.bandera1 = false;
-      this.bandera2 = false;
-      this.pushNotification(err);
-    });
+    this._sAudi.setFechaIni(event.detail.value);
+    this._sAudi.getAuditorias(false, true);
   }
 
   async changeTheme() {
@@ -73,17 +54,4 @@ export class HomePage implements OnInit {
     this.darkTheme = !this.darkTheme;
     this.changeTheme();
   }
-
-  async pushNotification(err:string) {
-    const toast = await this.toastCtrl.create({
-      message: err,
-      duration: 3000,
-      animated: true,
-      position: 'top',
-      cssClass: 'notificacion',
-    });
-
-    toast.present();
-  }
-
 }

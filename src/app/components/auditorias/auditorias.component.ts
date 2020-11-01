@@ -14,4 +14,8 @@ export class AuditoriasComponent implements OnInit {
 
   ngOnInit() { }
 
+  unread(event) {
+    console.log(event);
+  }
+
 }
